@@ -16,11 +16,11 @@ object InvertedIndex {
       "References", "Nntp-Posting-Host", "Received", "reply-to",
       "content-length", "followup-to", "sender")
       .map(_.toLowerCase + ":")
-    val regex = """[a-z][a-z']+""".r
+    val regex = """[a-z]+('[a-z]+)?""".r
 
     sc.wholeTextFiles("d:/test/*")
       .map {
-        case (path, text) => path.replaceFirst(".+/", "") ->
+        case (path, text) => path.replaceFirst(".+/(.+/.+)", "$1") ->
           text.toLowerCase.split("\n")
             .filter(l => badStart.forall(!l.startsWith(_)))
             .flatMap(regex.findAllIn(_).toList)
