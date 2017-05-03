@@ -15,7 +15,7 @@ object InvertedIndex {
       "last-modified:", "version:", "article-i.d.:", "subj:", "cc:",
       "references:", "nntp-posting-host:", "received:", "reply-to:",
       "content-length:", "followup-to:", "sender:")
-    val regex = """[a-z]+('[a-z]+)?""".r
+    val regex = "[a-z]+('[a-z]+)?".r
 
     sc.wholeTextFiles("d:/test/*")
       .map {
