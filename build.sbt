@@ -14,13 +14,7 @@ resolvers ++= Seq(
 
 resolvers += Resolver.mavenLocal
 
-val sparkVersion = "2.1.0"
-
 libraryDependencies ++= Seq(
-  "org.scala-lang"   %  "scala-library"   % "2.11.0",
-  "org.scala-lang"   %  "scala-xml"       % "2.11.0-M4",
-  "org.apache.spark" %% "spark-core"      % sparkVersion,
-  "org.apache.spark" %% "spark-sql"       % sparkVersion,
-  "org.apache.spark" %% "spark-graphx"    % sparkVersion,
-  "org.apache.spark" %% "spark-streaming" % sparkVersion
+  "org.apache.spark" %% "spark-sql"       % "2.1.0",
+  "org.apache.spark" %% "spark-graphx"    % "2.1.0"
 )
