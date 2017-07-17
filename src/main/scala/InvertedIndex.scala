@@ -8,6 +8,10 @@ object InvertedIndex {
       .getOrCreate
     val sc = spark.sparkContext
 
+    /**
+      * Created for `20 Newsgroup DataSet` from
+      * http://www.cs.cmu.edu/afs/cs/project/theo-20/www/data/news20.html
+      */
     val badStart = Set("xref:", "path:", "from:", "newsgroups:",
       "subject:", "summary:", "keywords:", "message-id:", "date:",
       "expires:", "followup:", "distribution:", "organization:",
@@ -17,7 +21,7 @@ object InvertedIndex {
       "content-length:", "followup-to:", "sender:")
     val regex = "[a-z]+('[a-z]+)?".r
 
-    sc.wholeTextFiles("d:/test/*")
+    sc.wholeTextFiles("path/to/20_newsgroup/*")
       .map {
         case (path, text) => path.replaceFirst(".+/(.+/.+)", "$1") ->
           text.toLowerCase.split("\n")
