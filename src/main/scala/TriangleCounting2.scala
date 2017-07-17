@@ -8,7 +8,7 @@ object TriangleCounting2 {
       .getOrCreate
     val sc = spark.sparkContext
 
-    val graph = sc.textFile("d:/graph.txt").flatMap(s => {
+    val graph = sc.textFile("graph.txt").flatMap(s => {
       val a = s.split(" ").map(_.toInt).sorted
       if (a(0) == a(1)) List()
       else List((a(0), a(1)))

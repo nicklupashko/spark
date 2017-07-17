@@ -10,7 +10,7 @@ object TriangleCounting {
     val sc = spark.sparkContext
 
     val count =
-      GraphLoader.edgeListFile(sc, "d:/graph.txt", false)
+      GraphLoader.edgeListFile(sc, "graph.txt", false)
         .partitionBy(PartitionStrategy.RandomVertexCut)
         .triangleCount.vertices.values.sum.toLong / 3
 
